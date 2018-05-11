@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".DietActivity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="80dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.436">
+
+        <CheckBox
+            android:id="@+id/checkBoxVege"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/d_vege" />
+
+        <CheckBox
+            android:id="@+id/checkBoxPesce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/d_pesce" />
+
+        <CheckBox
+            android:id="@+id/checkBoxVegan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/d_vegan" />
+
+        <CheckBox
+            android:id="@+id/checkBoxGlutenFree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/d_gluten" />
+
+        <CheckBox
+            android:id="@+id/checkBoxLactose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/d_lactose" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Other - Please Specify" />
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/next_page"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+</android.support.constraint.ConstraintLayout>
