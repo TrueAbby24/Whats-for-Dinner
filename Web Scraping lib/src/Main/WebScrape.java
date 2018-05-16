@@ -78,7 +78,10 @@ public class WebScrape {
 		SearchTerms x = new SearchTerms();
 		x.addPrefrence("pizza");
 		x.addPrefrence("italian");
+		System.out.println("before: " + x.toString());
 		x.removePrefrence("pizza");
+		System.out.println("after: " + x.toString());
+		
 		
 	}
 }
