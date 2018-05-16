@@ -32,6 +32,7 @@ public class RecipeServer {
 	public void findDetails() throws IOException{
 		String buffer = BASE_RECIPE_URL + recipeID;
 		final Document doc = Jsoup.connect(buffer).get();
+		name = doc.select("h1.recipe-summary__h1").text();
 		cookingTime = doc.select("span.ready-in-time").text();
 		servingSize = doc.select("#metaRecipeServings").attr("content");
 		calories = doc.select(".calorie-count span:first-child").text();
@@ -50,8 +51,8 @@ public class RecipeServer {
 		}	
 		
 		method = new ArrayList<>();
-		for (Element step : doc.select("ol.list-numbers.recipe-directions__list "
-				+ "li.step") ){			
+		for (Element step : doc.select("ol.list-numbers.recipe-directions__list"
+				+ " li.step") ){			
 			buffer = step.select("span.recipe-directions__list--item").text();
 			if(!buffer.equals("")){
 				method.add(buffer);

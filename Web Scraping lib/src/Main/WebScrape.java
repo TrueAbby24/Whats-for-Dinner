@@ -1,6 +1,7 @@
 package Main;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.print.DocFlavor.STRING;
 
@@ -70,17 +71,51 @@ public class WebScrape {
 //		arrayBuff.add("flour");
 //		arrayBuff.add("egg");
 //		test.put("ingredients", arrayBuff);
+//		System.out.println("manual entry:");
 //		System.out.println(test);
 //		SearchServer s = new SearchServer(test.toString());
 //		System.out.println(s.getResults());
-//		RecipeServer r = new RecipeServer("257193");
-//		System.out.println(r.getJSON());
-		SearchTerms x = new SearchTerms();
-		x.addPrefrence("pizza");
-		x.addPrefrence("italian");
-		System.out.println("before: " + x.toString());
-		x.removePrefrence("pizza");
-		System.out.println("after: " + x.toString());
+		
+//		SEARCH TERMS
+		SearchTerms terms = new SearchTerms();
+		terms.addDietReq("vegan");
+		terms.addAllergies("nuts");
+		terms.addAllergies("nuts");
+		terms.addKeywords("white chocolate");
+		terms.addIngredients("flour");
+		terms.addIngredients("egg");
+		System.out.println("(C) search terms:");
+		System.out.println(terms.toString());
+//		SEARCH		
+		SearchServer s = new SearchServer(terms.toString());
+		System.out.println("(S) Search results:");
+		System.out.println(s.getResults());
+//		SEARCH RESULTS BREAK UP
+		SearchResultsClient sr = new SearchResultsClient(s.getResults());
+//		**GET RECIPE RESULTS AS ARRAYLIST
+		ArrayList<RecipeMiniClient> rmc = sr.getRecipes();
+//		for(RecipeMiniClient r : rmc) {
+//			System.out.println(r.getTitle());
+//		}
+//		**GET RECIPE RESULTS ONE AT A TIME
+		RecipeMiniClient rm= sr.getRecipeMini();
+		int i = 0;
+//		while(rm != null) {
+//			System.out.println((++i) + "--"+rm.getTitle());
+//			rm = sr.getRecipeMini();
+//		}
+//		
+		RecipeServer r = new RecipeServer("257193");
+		System.out.println(r.getJSON());
+		RecipeClient rc = new RecipeClient(r.getJSON());
+		String buffer = rc.getNextStep();
+		i = 1;
+		System.out.println("--STEPS:");
+		while (buffer != null){
+			System.out.println(i++ + ".) " + buffer);
+			buffer = rc.getNextStep();
+		}
+//		System.out.println(r.getJSON());		
 		
 		
 	}

@@ -27,12 +27,14 @@ public class SearchServer {
 	private final static char URL_SEARCH_LINK = '&';
 	private final static String RECIPE_URL = 
 			"https://www.allrecipes.com/recipe/";
-	private String searchUrl;
+//	private String searchUrl;
+	private String searchResults;
 	
-	public SearchServer(String terms) throws ParseException{ 
+	public SearchServer(String terms) throws ParseException, IOException{ 
 		//take in user as param for pref and allergies 
 //		construct URL
-		searchUrl = constructURL(terms);
+		String searchUrl = constructURL(terms);
+		doSearch(searchUrl);
 	}	
 	
 	private String arraySearchTerms(JSONArray j) {
@@ -68,10 +70,12 @@ public class SearchServer {
 		if (buffer.size() != 0){
 			result.addAll(buffer);
 		}
-//		System.out.println("result:\n" + result.toJSONString());
-//		jKeywords.addAll((JSONArray) jobj.get("preferences"));
-//		jKeywords.addAll((JSONArray) jobj.get("dietary_req"));
-		
+		if(jobj.get("keywords") instanceof JSONArray){
+			buffer = (JSONArray) jobj.get("keywords");
+		}
+		if (buffer.size() != 0){
+			result.addAll(buffer);
+		}		
 		return result;
 	}
 	private String constructURL(String terms) throws ParseException {
@@ -135,17 +139,14 @@ public class SearchServer {
         }
 	}
 	
-	public String getResults() throws IOException{
+	private void doSearch(String searchUrl) throws IOException{
 //		Web Scrape
 		final Document doc = Jsoup.connect(searchUrl).get();
-//		System.out.println(doc);
 		JSONArray result = new JSONArray();
 		JSONObject recipe;
-//		int i = 0;
 		for (Element recipeCard : doc.select("#fixedGridSection "
 				+ "article.fixed-recipe-card")){
-//			i++;
-//			extract recipe data
+//			break up recipe data
 			String title = recipeCard.select(".fixed-recipe-card__info h3")
 					.text();
 			String blurb = recipeCard.select(".fixed-recipe-card__info "
@@ -163,6 +164,10 @@ public class SearchServer {
 			recipe.put("id", id);
 			result.add(recipe);
 		}
-		return result.toString();
+		searchResults = result.toString();
+	}
+	
+	public String getResults() {
+		return searchResults;
 	}
 }
