@@ -41,5 +41,12 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_nav_base">NavBaseActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_fsgdfg">fsgdfg</string>
+    <string name="searchByIngr">Search by Ingredient</string>
+    <string name="searchByName">Search by Name</string>
 
 </resources>

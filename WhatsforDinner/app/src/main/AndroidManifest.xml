@@ -36,13 +36,9 @@
             android:label="@string/dietaryreq"
             android:parentActivityName=".AllergiesActivity" />
         <activity
-            android:name=".practicedrawer"
-            android:label="@string/title_activity_practicedrawer"
+            android:name=".NavBaseActivity"
+            android:label="@string/title_activity_nav_base"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
