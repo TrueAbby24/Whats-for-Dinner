@@ -22,14 +22,23 @@ public class RecipeServer {
 	private String calories;
 	private ArrayList<String> ingredients;
 	private ArrayList<String> method;
-//	private JSONArray ingredients2;
-//	private JSONArray method2;
+	
+	/**
+	 * Initialises the information for recipe with given id
+	 * @param id	recipe id
+	 * @throws IOException
+	 */
 	public RecipeServer (String id) throws IOException { 
 		this.recipeID = id;		
 		findDetails();
 	}
 	
-	public void findDetails() throws IOException{
+	
+	/**
+	 * Extracts recipes information from AllRecipes.
+	 * @throws IOException
+	 */
+	private void findDetails() throws IOException{
 		String buffer = BASE_RECIPE_URL + recipeID;
 		final Document doc = Jsoup.connect(buffer).get();
 		name = doc.select("h1.recipe-summary__h1").text();
@@ -49,7 +58,7 @@ public class RecipeServer {
 				ingredients.add(buffer);
 			}
 		}	
-		
+
 		method = new ArrayList<>();
 		for (Element step : doc.select("ol.list-numbers.recipe-directions__list"
 				+ " li.step") ){			
@@ -60,14 +69,21 @@ public class RecipeServer {
 		}		
 	}
 	
+	/**
+	 * Generates JSON string of all the information about the recipe.
+	 * @return JSON string
+	 */
 	public String getJSON() {
+		JSONObject buffer = new JSONObject();
+		buffer.put("cookingTime", cookingTime);
+		buffer.put("servingSize", servingSize);
+		buffer.put("name", name);
+		buffer.put("calories", calories);
+		buffer.put("ingredients", ingredients);
+		buffer.put("method", method);
 		JSONObject result = new JSONObject();
-		result.put("cookingTime", cookingTime);
-		result.put("servingSize", servingSize);
-		result.put("name", name);
-		result.put("calories", calories);
-		result.put("ingredients", ingredients);
-		result.put("method", method);
+		result.put("type", "RecipeResult");
+		result.put("data", buffer);
 		return result.toJSONString();
 	}
 	

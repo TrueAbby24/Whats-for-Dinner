@@ -28,10 +28,10 @@ public class SearchResultsClient {
 		}
 	}
 	
-	public ArrayList<RecipeMiniClient> getRecipes() {
-		return results;
-	}
-	
+	/**
+	 * Returns recipe results one at a time.
+	 * @return 	Returns a recipe, if it has returned all recipes otherwise null.
+	 */
 	public RecipeMiniClient getRecipeMini() {
 		if (returnCount < results.size()) 
 				return results.get(returnCount++);

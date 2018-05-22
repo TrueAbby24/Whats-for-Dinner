@@ -6,6 +6,13 @@ public class RecipeMiniClient {
 	private String title;
 	private String blurb;
 	
+	/**
+	 * Creates a recipe item with minimal information for displaying search results. 
+	 * @param id
+	 * @param imgUrl
+	 * @param title
+	 * @param blurb
+	 */
 	public RecipeMiniClient(String id, String imgUrl, String title,
 			String blurb) {
 		this.id = id;

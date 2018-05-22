@@ -55,6 +55,14 @@ public class RecipeClient {
 		return null;
 	}
 	
+	public String[] getMethodList() {
+		String[] results = new String[method.size()];
+		for (int i = 0; i<method.size(); i++) {
+			results[i] = method.get(i).toString();
+		}
+		return results;
+	}
+	
 	public String getTitle(){
 		return title;
 	}

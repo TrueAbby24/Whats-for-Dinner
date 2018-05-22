@@ -173,10 +173,13 @@ public class SearchTerms {
 	 * Returns a JSON string representation of the search terms.
 	 */
 	public String toString(){
-		JSONObject result = new JSONObject(); 
+		JSONObject buffer = new JSONObject(); 
 		for (typeArray x : typeArray.values()) {
-			result.put(x, getCorrespondingArray(x));
+			buffer.put(x, getCorrespondingArray(x));
 		}
+		JSONObject result = new JSONObject();
+		result.put("type", "SearchTerms");
+		result.put("data", buffer.toString());
 		return result.toString();
 	}
 }
