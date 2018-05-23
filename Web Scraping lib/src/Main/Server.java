@@ -1,7 +1,6 @@
 package Main;
 
 import java.io.IOException;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -10,7 +9,11 @@ public class Server {
 	
 	public static void main (String[] args) throws ParseException, IOException {
 		JSONParser parser = new JSONParser();
-		JSONObject obj = (JSONObject) parser.parse(args[0]);
+		String toParse = "";
+		for (String s : args) {
+			toParse += s;
+		}		
+		JSONObject obj = (JSONObject) parser.parse(toParse);
 		String type = (String) obj.get("type");
 		if (type.equals("SearchTerms")){
 			SearchServer s = new SearchServer((String) obj.get("data"));
