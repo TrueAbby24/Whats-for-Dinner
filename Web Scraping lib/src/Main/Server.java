@@ -13,8 +13,10 @@ public class Server {
 		for (String s : args) {
 			toParse += s;
 		}		
+//		System.out.println(toParse);
 		JSONObject obj = (JSONObject) parser.parse(toParse);
 		String type = (String) obj.get("type");
+//		System.out.println("type: " + type);
 		if (type.equals("SearchTerms")){
 			SearchServer s = new SearchServer((String) obj.get("data"));
 			System.out.println(s.getResults());
@@ -22,7 +24,7 @@ public class Server {
 			RecipeServer recipe = new RecipeServer((String) obj.get("data"));
 			System.out.println(recipe.getJSON());
 		} else {
-			System.out.println("problem :(");
+			System.out.println("INVALID JSON FORMAT");
 		}
 	}
 
