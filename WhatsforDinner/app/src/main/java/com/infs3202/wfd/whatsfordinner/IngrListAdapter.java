@@ -1,4 +1,4 @@
-package com.infs3202.wfd.whatsfordinner;
+/** package com.infs3202.wfd.whatsfordinner;
 
 import android.support.v7.widget.RecyclerView;
 
@@ -10,3 +10,4 @@ public class IngrListAdapter extends RecyclerView.Adapter<IngrListAdapter.ViewHo
 
     }
 }
+*/

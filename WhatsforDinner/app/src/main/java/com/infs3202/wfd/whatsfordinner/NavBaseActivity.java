@@ -15,10 +15,10 @@ import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.infs3202.wfd.whatsfordinner.utils.NetworkHelper;
 
 import java.io.IOException;
 
+import Main.SearchTerms;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -27,7 +27,7 @@ import okhttp3.Response;
 
 public class NavBaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnFragmentInteractionListener {
-
+    String url = "https://infs32025eab4a09.uqcloud.net/"; // the base url for search
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,36 +47,6 @@ public class NavBaseActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         displaySelectedScreen(R.id.nav_home);
-
-        // setting up okhttp
-        OkHttpClient client = new OkHttpClient();
-
-        String url = ""; // the base url for the server
-
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if(response.isSuccessful()) {
-                    final String myResponse = response.body().string();
-
-                    NavBaseActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                        //    mTextViewResult.setText(myResponse);  basically what will happen when a response is received
-                        }
-                    });
-                }
-            }
-        });
     }
 
     @Override
@@ -169,6 +139,34 @@ public class NavBaseActivity extends AppCompatActivity
         return true;
     }
 
+
+    public Response searchGetRequest(String jsonString){
+        // setting up okhttp
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url(url + jsonString)
+                .get()
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            return response;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
+
+
+
+
+
+    // FRAGMENT SHENANIGANS
+
     /**
      *  Used to opem a new fragment based off the id provided.
      *
@@ -189,9 +187,9 @@ public class NavBaseActivity extends AppCompatActivity
           //  fragment = new ;
            // runReplaceTransaction(fragment);
         }
-        else if (id == "ingr") {
-            fragment = new IngrSearchFragment();
-            runReplaceTransaction(fragment);
+        else if (id == "") {
+            //fragment = new IngrSearchFragment();
+            //runReplaceTransaction(fragment);
         }
     }
 
@@ -208,9 +206,16 @@ public class NavBaseActivity extends AppCompatActivity
     }
 
     @Override
-    public String getNameSearchParam(TextInputEditText editText){
+    public Response runNameSearch(TextInputEditText editText){
         String nameParam = editText.getText().toString();
-        return nameParam;
+
+        SearchTerms searchTerms = new SearchTerms();
+        searchTerms.addKeywords(nameParam);
+        // Need to get and add diet and allergies to searchTerms as well
+        Response response = searchGetRequest("search.php?terms="+searchTerms.toString());
+
+
+        return response;
     }
 
 

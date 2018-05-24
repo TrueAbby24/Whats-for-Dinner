@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 
 
 /**
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class DietFragment extends Fragment {
+    CheckBox vegCheck;
 
 
     public DietFragment() {
