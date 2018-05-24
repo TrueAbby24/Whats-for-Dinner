@@ -118,7 +118,7 @@ public class WebScrape {
 		con.setDoOutput(true);
 		OutputStream os = con.getOutputStream();
 //		os.write("email=bloubulle@pretoria.co.za&name=Vic".getBytes());
-		os.write("email=489789789&password=siddy".getBytes());
+		os.write("email=456rftyjhbn&password=siddy".getBytes());
 		os.flush();	
 		os.close();
 		// For POST only - END
@@ -147,7 +147,8 @@ public class WebScrape {
 //		firstTry();
 //		originalLibFunctionality();
 //		testHttpRequest();
-		sendPOST();
+//		sendPOST();email=456rftyjhbn&password=siddy
+		System.out.println(HttpRequest.tryLogin("sid@gmail.com", "siddy"));
 		
 	}
 }
