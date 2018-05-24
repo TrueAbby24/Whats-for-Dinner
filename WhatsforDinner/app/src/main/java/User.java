@@ -66,6 +66,7 @@ public class User {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         diets.put("", false);
         diets.put(d_pesce, false);
         diets.put("@string/d_vegan", false);
@@ -84,6 +85,10 @@ public class User {
     public String getOtherDietReq () {
         return otherDietReq;
 >>>>>>> 906257cebfb5a58510c06b75ed5c7757695a5f07
+=======
+    public String getOtherDietReq () {
+        return otherDietReq;
+>>>>>>> 0853965ed57e84b0085bf4a3109d2f8b48869dff
     }
 
 
