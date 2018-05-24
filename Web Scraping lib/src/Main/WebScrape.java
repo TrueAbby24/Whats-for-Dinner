@@ -11,7 +11,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import com.sun.xml.internal.bind.v2.model.util.ArrayInfoUtil;
+//import com.sun.xml.internal.bind.v2.model.util.ArrayInfoUtil;
 
 public class WebScrape {
 
@@ -66,14 +66,14 @@ public class WebScrape {
 		System.out.println("(C) search terms:");
 		System.out.println(terms.toString());
 //		SEARCH		
-		SearchServer s = new SearchServer(terms.toString());
-		System.out.println("(S) Search results:");
-		System.out.println(s.getResults());
+//		SearchServer s = new SearchServer(terms.toString());
+//		System.out.println("(S) Search results:");
+//		System.out.println(s.getResults());
 //		SEARCH RESULTS BREAK UP
-		SearchResultsClient sr = new SearchResultsClient(s.getResults());
+//		SearchResultsClient sr = new SearchResultsClient(s.getResults());
 //		**GET RECIPE RESULTS ONE AT A TIME
-		RecipeMiniClient rm = sr.getRecipeMini();
-		int i = 0;
+//		RecipeMiniClient rm = sr.getRecipeMini();
+//		int i = 0;
 //		while(rm != null) {
 //			System.out.println((++i) + "--"+rm.getTitle());
 //			rm = sr.getRecipeMini();
@@ -81,9 +81,9 @@ public class WebScrape {
 //		JSONObject recipeID = new JSONObject();
 		
 		
-		RecipeServer r = new RecipeServer("257193");
-		System.out.println(r.getJSON());
-		RecipeClient rc = new RecipeClient(r.getJSON());
+//		RecipeServer r = new RecipeServer("257193");
+//		System.out.println(r.getJSON());
+//		RecipeClient rc = new RecipeClient(r.getJSON());
 //		String buffer = rc.getNextStep();
 //		i = 1;
 //		System.out.println("--STEPS:");

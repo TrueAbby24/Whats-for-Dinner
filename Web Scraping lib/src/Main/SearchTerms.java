@@ -177,10 +177,7 @@ public class SearchTerms {
 		for (typeArray x : typeArray.values()) {
 			buffer.put(x, getCorrespondingArray(x));
 		}
-		JSONObject result = new JSONObject();
-		result.put("type", "SearchTerms");
-		result.put("data", buffer.toString());
-		return result.toString();
+		return buffer.toString();
 	}
 }
 
