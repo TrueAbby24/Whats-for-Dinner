@@ -71,6 +71,7 @@ public class AllergiesFragment extends Fragment {
         checkFish = (CheckBox) view.findViewById(R.id.checkBoxFishF);
         checkShellFish = (CheckBox) view.findViewById(R.id.checkBoxShellfishF);
         checkWheat = (CheckBox) view.findViewById(R.id.checkBoxWheatF);
+
         other = (TextInputEditText) view.findViewById(R.id.allergyOtherF);
         saveBtn = (Button) view.findViewById(R.id.allergySaveBtn);
 
@@ -90,6 +91,7 @@ public class AllergiesFragment extends Fragment {
                 checked.clear();
                 checkBoxChecked(checkBoxList);
                 // send to server/db
+                // move to next nav base activity
             }
         });
 

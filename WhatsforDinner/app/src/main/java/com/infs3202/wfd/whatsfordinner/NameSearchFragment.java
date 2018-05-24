@@ -26,7 +26,9 @@ import okhttp3.Response;
 public class NameSearchFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-    TextInputEditText searchParam;
+    public TextInputEditText searchParam;
+    public TextView test;
+    public Button searchButton;
 
     public NameSearchFragment() {
         // Required empty public constructor
@@ -42,8 +44,8 @@ public class NameSearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_name_search, container, false);
-        final TextView test = (TextView) view.findViewById(R.id.testtext);
-        Button searchButton = (Button) view.findViewById(R.id.nSearch);
+        test = (TextView) view.findViewById(R.id.testtext);
+        searchButton = (Button) view.findViewById(R.id.nSearch);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){

@@ -32,31 +32,31 @@
         app:layout_constraintVertical_bias="0.436">
 
         <CheckBox
-            android:id="@+id/checkBoxVege"
+            android:id="@+id/checkBoxVegeF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/d_vege" />
 
         <CheckBox
-            android:id="@+id/checkBoxPesce"
+            android:id="@+id/checkBoxPesceF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/d_pesce" />
 
         <CheckBox
-            android:id="@+id/checkBoxVegan"
+            android:id="@+id/checkBoxVeganF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/d_vegan" />
 
         <CheckBox
-            android:id="@+id/checkBoxGlutenFree"
+            android:id="@+id/checkBoxGlutenFreeF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/d_gluten" />
 
         <CheckBox
-            android:id="@+id/checkBoxLactose"
+            android:id="@+id/checkBoxLactoseF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/d_lactose" />
@@ -66,6 +66,7 @@
             android:layout_height="match_parent">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/dietOtherF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Other - Please Specify" />
@@ -74,7 +75,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/dietSaveBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

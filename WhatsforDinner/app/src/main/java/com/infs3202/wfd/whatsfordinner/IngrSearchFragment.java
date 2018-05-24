@@ -106,6 +106,7 @@ public class IngrSearchFragment extends Fragment {
             @Override
             public void onClick(View view) {
             // When button is pressed take string values and add to search terms object
+                // open new fragment to display results
             }
         });
 

@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void registerClick(View view){
-        Intent intent = new Intent(this, NavBaseActivity.class);
+        Intent intent = new Intent(this, DietActivity.class);
         startActivity(intent);
     }
 
