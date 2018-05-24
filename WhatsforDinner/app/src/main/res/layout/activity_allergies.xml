@@ -84,6 +84,7 @@
             android:layout_height="match_parent">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/allergyOther"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Other - Please Specify" />
@@ -91,7 +92,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/allergyNextBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/next_page"

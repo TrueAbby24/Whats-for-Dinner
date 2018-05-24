@@ -110,7 +110,11 @@ public class WebScrape {
 	}
 	private static void sendPOST() throws IOException {
 //		URL obj = new URL("https://infs3202-5eab4a09.uqcloud.net/testStuff/post.php");
+<<<<<<< HEAD
 		URL obj = new URL("https://infs3202-5eab4a09.uqcloud.net/register.php");
+=======
+		URL obj = new URL("https://infs3202-5eab4a09.uqcloud.net/rego.php");
+>>>>>>> 0853965ed57e84b0085bf4a3109d2f8b48869dff
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("POST");
 
@@ -118,7 +122,11 @@ public class WebScrape {
 		con.setDoOutput(true);
 		OutputStream os = con.getOutputStream();
 //		os.write("email=bloubulle@pretoria.co.za&name=Vic".getBytes());
+<<<<<<< HEAD
 		os.write("email=bloubulle@pretoria.co.za&password=Vic".getBytes());
+=======
+		os.write("email=456rftyjhbn&password=siddy".getBytes());
+>>>>>>> 0853965ed57e84b0085bf4a3109d2f8b48869dff
 		os.flush();	
 		os.close();
 		// For POST only - END
@@ -147,7 +155,8 @@ public class WebScrape {
 //		firstTry();
 //		originalLibFunctionality();
 //		testHttpRequest();
-		sendPOST();
+//		sendPOST();email=456rftyjhbn&password=siddy
+		System.out.println(HttpRequest.tryLogin("sid@gmail.com", "siddy"));
 		
 	}
 }

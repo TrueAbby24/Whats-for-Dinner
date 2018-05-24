@@ -8,7 +8,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -20,14 +25,23 @@ import android.widget.CheckBox;
  * create an instance of this fragment.
  */
 public class AllergiesFragment extends Fragment {
-    CheckBox milkCheck;
-    CheckBox peanutsCheck;
-    CheckBox treeNutsCheck;
-    CheckBox eggsCheck;
-    CheckBox soyCheck;
-    CheckBox fishCheck;
-    CheckBox shellfishCheck;
-    CheckBox wheatCheck;
+
+    private OnFragmentInteractionListener mListener;
+
+    CheckBox[] checkBoxArray = {};
+
+    CheckBox checkMilk;
+    CheckBox checkPeanut;
+    CheckBox checkTreeNut;
+    CheckBox checkEgg;
+    CheckBox checkSoy;
+    CheckBox checkFish;
+    CheckBox checkShellFish;
+    CheckBox checkWheat;
+    TextInputEditText other;
+    Button saveBtn;
+
+    List<String> checked;
 
     public AllergiesFragment() {
         // Required empty public constructor
@@ -49,7 +63,46 @@ public class AllergiesFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_allergies, container, false);
 
+        checkMilk = (CheckBox) view.findViewById(R.id.checkBoxMilkF);
+        checkPeanut = (CheckBox) view.findViewById(R.id.checkBoxPeanutsF);
+        checkTreeNut = (CheckBox) view.findViewById(R.id.checkBoxTreeNutsF);
+        checkEgg = (CheckBox) view.findViewById(R.id.checkBoxEggsF);
+        checkSoy = (CheckBox) view.findViewById(R.id.checkBoxSoyF);
+        checkFish = (CheckBox) view.findViewById(R.id.checkBoxFishF);
+        checkShellFish = (CheckBox) view.findViewById(R.id.checkBoxShellfishF);
+        checkWheat = (CheckBox) view.findViewById(R.id.checkBoxWheatF);
+        other = (TextInputEditText) view.findViewById(R.id.allergyOtherF);
+        saveBtn = (Button) view.findViewById(R.id.allergySaveBtn);
+
+        final List<CheckBox> checkBoxList = new ArrayList(Arrays.asList(checkBoxArray));
+        checkBoxList.add(checkMilk);
+        checkBoxList.add(checkPeanut);
+        checkBoxList.add(checkTreeNut);
+        checkBoxList.add(checkEgg);
+        checkBoxList.add(checkSoy);
+        checkBoxList.add(checkFish);
+        checkBoxList.add(checkShellFish);
+        checkBoxList.add(checkWheat);
+
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checked.clear();
+                checkBoxChecked(checkBoxList);
+                // send to server/db
+            }
+        });
+
 
         return view;
+    }
+
+
+    public void checkBoxChecked(List<CheckBox> list){
+        for(CheckBox allergy:list){
+            if (allergy.isChecked()){
+                checked.add(allergy.getText().toString());
+            }
+        }
     }
 }

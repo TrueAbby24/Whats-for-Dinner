@@ -25,8 +25,12 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class IngrSearchFragment extends Fragment {
+
+    private OnFragmentInteractionListener mListener;
+
     private Context mContext;
     private Button mButtonAdd;
+    private Button mButtonSearch;
     private LinearLayout mLinearLayout;
     private TextInputEditText ingredientItem;
 
@@ -80,20 +84,31 @@ public class IngrSearchFragment extends Fragment {
 
                 for(String ingredient:ingredientList){
                     if(ingredientList.contains(ingredient)){
+
                         Toast.makeText(mContext, "This ingredient is already listed", Toast.LENGTH_SHORT).show();
-                    } else{
+
+                    } else if(ingredient.isEmpty()){
+
+                        Toast.makeText(mContext, "No input provided", Toast.LENGTH_SHORT).show();
+
+                    } else {
                         ingredientList.add(position, itemLabel);
                     }
+
                 }
-
-
-
                 mAdapter.notifyItemInserted(position);
                 mRecyclerView.scrollToPosition(position);
 
                 Toast.makeText(mContext, "Added: " + itemLabel, Toast.LENGTH_SHORT).show();
             }
         });
+        mButtonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            // When button is pressed take string values and add to search terms object
+            }
+        });
+
         return view;
     }
 

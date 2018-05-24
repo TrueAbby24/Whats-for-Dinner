@@ -19,6 +19,9 @@ import android.widget.CheckBox;
  * create an instance of this fragment.
  */
 public class DietFragment extends Fragment {
+
+    private OnFragmentInteractionListener mListener;
+
     //CheckBox vegCheck;
     //CheckBox pesceCheck;
     //CheckBox veganCheck;

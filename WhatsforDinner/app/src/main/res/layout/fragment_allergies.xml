@@ -34,49 +34,49 @@ tools:context=".AllergiesFragment">
     app:layout_constraintVertical_bias="0.436">
 
     <CheckBox
-        android:id="@+id/checkBoxMilk"
+        android:id="@+id/checkBoxMilkF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/a_milk" />
 
     <CheckBox
-        android:id="@+id/checkBoxPeanuts"
+        android:id="@+id/checkBoxPeanutsF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/a_peanuts" />
 
     <CheckBox
-        android:id="@+id/checkBoxTreeNuts"
+        android:id="@+id/checkBoxTreeNutsF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/a_tree_nuts" />
 
     <CheckBox
-        android:id="@+id/checkBoxEggs"
+        android:id="@+id/checkBoxEggsF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/a_eggs" />
 
     <CheckBox
-        android:id="@+id/checkBoxSoy"
+        android:id="@+id/checkBoxSoyF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/a_soy" />
 
     <CheckBox
-        android:id="@+id/checkBoxFish"
+        android:id="@+id/checkBoxFishF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/a_fish" />
 
     <CheckBox
-        android:id="@+id/checkBoxShellfish"
+        android:id="@+id/checkBoxShellfishF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/a_shellfish" />
 
     <CheckBox
-        android:id="@+id/checkBoxWheat"
+        android:id="@+id/checkBoxWheatF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/a_wheat" />
@@ -86,6 +86,7 @@ tools:context=".AllergiesFragment">
         android:layout_height="match_parent">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/allergyOtherF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Other - Please Specify" />
@@ -94,7 +95,7 @@ tools:context=".AllergiesFragment">
 
     <!-- TODO: Change button to update allergy selections -->
     <Button
-        android:id="@+id/button"
+        android:id="@+id/allergySaveBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/Save"
