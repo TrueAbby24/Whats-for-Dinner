@@ -20,6 +20,10 @@ import android.widget.CheckBox;
  */
 public class DietFragment extends Fragment {
     CheckBox vegCheck;
+    CheckBox pesceCheck;
+    CheckBox veganCheck;
+    CheckBox glutenCheck;
+    CheckBox lactoseCheck;
 
 
     public DietFragment() {
@@ -29,8 +33,12 @@ public class DietFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        vegCheck = (CheckBox)getView().findViewById(R.id.checkBoxVege);
+        pesceCheck = (CheckBox)getView().findViewById(R.id.checkBoxPesce);
+        veganCheck = (CheckBox)getView().findViewById(R.id.checkBoxVegan);
+        glutenCheck = (CheckBox)getView().findViewById(R.id.checkBoxGlutenFree);
+        lactoseCheck = (CheckBox)getView().findViewById(R.id.checkBoxLactose);
     }
 
     @Override

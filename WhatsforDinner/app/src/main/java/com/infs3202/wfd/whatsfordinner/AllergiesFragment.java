@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 
 
 /**
@@ -18,6 +19,14 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class AllergiesFragment extends Fragment {
+    CheckBox milkCheck;
+    CheckBox peanutsCheck;
+    CheckBox treeNutsCheck;
+    CheckBox eggsCheck;
+    CheckBox soyCheck;
+    CheckBox fishCheck;
+    CheckBox shellfishCheck;
+    CheckBox wheatCheck;
 
     public AllergiesFragment() {
         // Required empty public constructor
@@ -28,6 +37,15 @@ public class AllergiesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        milkCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxMilk);
+        peanutsCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxPeanuts);
+        treeNutsCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxTreeNuts);
+        eggsCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxEggs);
+        soyCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxSoy);
+        fishCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxFish);
+        shellfishCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxShellfish);
+        wheatCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxWheat);
+
     }
 
     @Override
