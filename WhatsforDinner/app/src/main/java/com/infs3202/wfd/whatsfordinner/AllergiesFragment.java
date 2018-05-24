@@ -37,14 +37,7 @@ public class AllergiesFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        milkCheck = (CheckBox)getView().findViewById(R.id.checkBoxMilk);
-        peanutsCheck = (CheckBox)getView().findViewById(R.id.checkBoxPeanuts);
-        treeNutsCheck = (CheckBox)getView().findViewById(R.id.checkBoxTreeNuts);
-        eggsCheck = (CheckBox)getView().findViewById(R.id.checkBoxEggs);
-        soyCheck = (CheckBox)getView().findViewById(R.id.checkBoxSoy);
-        fishCheck = (CheckBox)getView().findViewById(R.id.checkBoxFish);
-        shellfishCheck = (CheckBox)getView().findViewById(R.id.checkBoxShellfish);
-        wheatCheck = (CheckBox)getView().findViewById(R.id.checkBoxWheat);
+
         super.onCreate(savedInstanceState);
 
 
@@ -54,6 +47,17 @@ public class AllergiesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_allergies, container, false);
+        View view = inflater.inflate(R.layout.fragment_allergies, container, false);
+
+        milkCheck = (CheckBox)getView().findViewById(R.id.checkBoxMilk);
+        peanutsCheck = (CheckBox)getView().findViewById(R.id.checkBoxPeanuts);
+        treeNutsCheck = (CheckBox)getView().findViewById(R.id.checkBoxTreeNuts);
+        eggsCheck = (CheckBox)getView().findViewById(R.id.checkBoxEggs);
+        soyCheck = (CheckBox)getView().findViewById(R.id.checkBoxSoy);
+        fishCheck = (CheckBox)getView().findViewById(R.id.checkBoxFish);
+        shellfishCheck = (CheckBox)getView().findViewById(R.id.checkBoxShellfish);
+        wheatCheck = (CheckBox)getView().findViewById(R.id.checkBoxWheat);
+
+        return view;
     }
 }

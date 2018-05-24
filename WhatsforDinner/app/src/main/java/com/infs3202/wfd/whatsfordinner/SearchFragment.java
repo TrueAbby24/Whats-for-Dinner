@@ -7,11 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SearchFragment#newInstance} factory method to
+ * Use thectory method to
  * create an instance of this fragment.
  */
 public class SearchFragment extends Fragment {
@@ -32,9 +33,15 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
 
+        Button nsBtn = (Button) view.findViewById(R.id.nameSearchButton);
+        Button isBtn = (Button) view.findViewById(R.id.ingrSearchButton);
 
+        createListener(nsBtn, "name");
+        createListener(isBtn, "ingr");
+
+        return view;
     }
 
     @Override
@@ -55,12 +62,14 @@ public class SearchFragment extends Fragment {
 
     }
 
-    public void nameSearchClick(View view) {
-        mListener.changeFragment("name");
-    }
 
-    public void ingrSearchClick(View view) {
-        mListener.changeFragment("ingr");
+    public void createListener(Button btn, final String id){
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                mListener.changeFragment(id);
+            }
+        });
     }
 
 }

@@ -28,14 +28,14 @@
             android:id="@+id/ingrSearchButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="ingrSearchClick"
+
             android:text="@string/searchByIngr" />
 
         <Button
             android:id="@+id/nameSearchButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="nameSearchClick"
+
             android:text="@string/searchByName" />
 
     </LinearLayout>
