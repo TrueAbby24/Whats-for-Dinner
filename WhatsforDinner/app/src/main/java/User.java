@@ -1,5 +1,9 @@
 import java.util.HashMap;
 
+/**
+ * Created by s4285131 on 24/05/2018.
+ */
+
 public class User {
     private String eMail;
     private HashMap<String, Boolean> diets = new HashMap();
