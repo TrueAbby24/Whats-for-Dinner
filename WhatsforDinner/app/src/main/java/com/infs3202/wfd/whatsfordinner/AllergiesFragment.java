@@ -3,6 +3,7 @@ package com.infs3202.wfd.whatsfordinner;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,14 +38,14 @@ public class AllergiesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        milkCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxMilk);
-        peanutsCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxPeanuts);
-        treeNutsCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxTreeNuts);
-        eggsCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxEggs);
-        soyCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxSoy);
-        fishCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxFish);
-        shellfishCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxShellfish);
-        wheatCheck = (TextInputEditText)getView().findViewById(R.id.checkBoxWheat);
+        milkCheck = (CheckBox)getView().findViewById(R.id.checkBoxMilk);
+        peanutsCheck = (CheckBox)getView().findViewById(R.id.checkBoxPeanuts);
+        treeNutsCheck = (CheckBox)getView().findViewById(R.id.checkBoxTreeNuts);
+        eggsCheck = (CheckBox)getView().findViewById(R.id.checkBoxEggs);
+        soyCheck = (CheckBox)getView().findViewById(R.id.checkBoxSoy);
+        fishCheck = (CheckBox)getView().findViewById(R.id.checkBoxFish);
+        shellfishCheck = (CheckBox)getView().findViewById(R.id.checkBoxShellfish);
+        wheatCheck = (CheckBox)getView().findViewById(R.id.checkBoxWheat);
 
     }
 

@@ -16,6 +16,8 @@ public interface OnFragmentInteractionListener {
     void changeFragment(String id);
 
     Response runNameSearch(TextInputEditText editText);
+
+
 }
 
 

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import okhttp3.Response;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link NameSearchFragment#newInstance} factory method to
+ * Use the
  * create an instance of this fragment.
  */
 public class NameSearchFragment extends Fragment {
@@ -64,7 +65,9 @@ public class NameSearchFragment extends Fragment {
         searchParam = (TextInputEditText)getView().findViewById(R.id.nameSearchParam);
         Response result;
         result = searchCallback.runNameSearch(searchParam);
+        Log.v("response return", result.toString());
         SearchResultsClient src = new SearchResultsClient(result.toString());
+
 
     }
 

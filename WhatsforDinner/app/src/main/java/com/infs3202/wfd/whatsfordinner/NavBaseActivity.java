@@ -28,6 +28,7 @@ import okhttp3.Response;
 public class NavBaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnFragmentInteractionListener {
     String url = "https://infs32025eab4a09.uqcloud.net/"; // the base url for search
+    Response response1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +141,7 @@ public class NavBaseActivity extends AppCompatActivity
     }
 
 
-    public Response searchGetRequest(String jsonString){
+    public void searchGetRequest(String jsonString){
         // setting up okhttp
         OkHttpClient client = new OkHttpClient();
 
@@ -149,14 +150,28 @@ public class NavBaseActivity extends AppCompatActivity
                 .get()
                 .build();
 
-        try {
-            Response response = client.newCall(request).execute();
-            return response;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (!response.isSuccessful()){
+                    throw new IOException("Unexpected code " + response);
+                } else {
+                    // do stuff with the result
+                    response1 = response;
+                }
+
+            }
+        });
+
     }
+
+
 
 
 
@@ -212,10 +227,12 @@ public class NavBaseActivity extends AppCompatActivity
         SearchTerms searchTerms = new SearchTerms();
         searchTerms.addKeywords(nameParam);
         // Need to get and add diet and allergies to searchTerms as well
-        Response response = searchGetRequest("search.php?terms="+searchTerms.toString());
+
+        searchGetRequest("search.php?terms="+searchTerms.toString());
 
 
-        return response;
+
+        return response1;
     }
 
 
