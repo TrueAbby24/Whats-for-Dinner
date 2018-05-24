@@ -11,10 +11,18 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 //import com.sun.xml.internal.bind.v2.model.util.ArrayInfoUtil;
 
 public class WebScrape {
-
+	private static final String POST_PARAMS = "userName=Pankaj";
+	
 	private static void imdbExample() throws IOException{
 		final Document doc = Jsoup.connect("https://www.imdb.com/chart/top").get();
 		
@@ -85,11 +93,8 @@ public class WebScrape {
 		
 	}
 	
-	public static void main(String[] args) throws Exception {
-//		imdbExample();
-//		firstTry();
-//		originalLibFunctionality();
-//		SEARCH TERMS
+	private static void testHttpRequest() {
+		//		SEARCH TERMS
 		SearchTerms terms = new SearchTerms();
 		terms.addDietReq("vegan");
 		terms.addAllergies("nuts");
@@ -102,6 +107,47 @@ public class WebScrape {
 		System.out.println(HttpRequest.getSearchResults(terms.toString()));
 		System.out.println(HttpRequest.getRecipe("257193"));
 
+	}
+	private static void sendPOST() throws IOException {
+//		URL obj = new URL("https://infs3202-5eab4a09.uqcloud.net/testStuff/post.php");
+		URL obj = new URL("https://infs3202-5eab4a09.uqcloud.net/register.php");
+		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+		con.setRequestMethod("POST");
+
+		// For POST only - START
+		con.setDoOutput(true);
+		OutputStream os = con.getOutputStream();
+//		os.write("email=bloubulle@pretoria.co.za&name=Vic".getBytes());
+		os.write("email=bloubulle@pretoria.co.za&password=Vic".getBytes());
+		os.flush();	
+		os.close();
+		// For POST only - END
+		int responseCode = con.getResponseCode();
+		System.out.println("POST Response Code: " + responseCode);
+
+		if (responseCode == HttpURLConnection.HTTP_OK) { //success
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					con.getInputStream()));
+			String inputLine;
+			StringBuffer response = new StringBuffer();
+			while ((inputLine = in.readLine()) != null) {
+//				response.append(inputLine);
+				System.out.println(inputLine);
+			}
+			in.close();
+			// print result
+//			System.out.println(response.toString());
+		} else {
+			System.out.println("POST request not worked");
+		}
+	}
+	
+	public static void main(String[] args) throws Exception {
+//		imdbExample();
+//		firstTry();
+//		originalLibFunctionality();
+//		testHttpRequest();
+		sendPOST();
 		
 	}
 }

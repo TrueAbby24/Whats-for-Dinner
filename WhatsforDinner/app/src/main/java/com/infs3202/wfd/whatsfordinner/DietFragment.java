@@ -19,11 +19,11 @@ import android.widget.CheckBox;
  * create an instance of this fragment.
  */
 public class DietFragment extends Fragment {
-    CheckBox vegCheck;
-    CheckBox pesceCheck;
-    CheckBox veganCheck;
-    CheckBox glutenCheck;
-    CheckBox lactoseCheck;
+    //CheckBox vegCheck;
+    //CheckBox pesceCheck;
+    //CheckBox veganCheck;
+    //CheckBox glutenCheck;
+    //CheckBox lactoseCheck;
 
 
     public DietFragment() {
@@ -43,11 +43,12 @@ public class DietFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_diet, container, false);
 
-        vegCheck = (CheckBox)getView().findViewById(R.id.checkBoxVege);
-        pesceCheck = (CheckBox)getView().findViewById(R.id.checkBoxPesce);
-        veganCheck = (CheckBox)getView().findViewById(R.id.checkBoxVegan);
-        glutenCheck = (CheckBox)getView().findViewById(R.id.checkBoxGlutenFree);
-        lactoseCheck = (CheckBox)getView().findViewById(R.id.checkBoxLactose);
+
+        //vegCheck = (CheckBox)getView().findViewById(R.id.checkBoxVege);
+        //pesceCheck = (CheckBox)getView().findViewById(R.id.checkBoxPesce);
+        //veganCheck = (CheckBox)getView().findViewById(R.id.checkBoxVegan);
+        //glutenCheck = (CheckBox)getView().findViewById(R.id.checkBoxGlutenFree);
+        //lactoseCheck = (CheckBox)getView().findViewById(R.id.checkBoxLactose);
 
         return view;
     }

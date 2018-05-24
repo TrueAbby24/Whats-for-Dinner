@@ -30,6 +30,7 @@ public class NavBaseActivity extends AppCompatActivity
     String url = "https://infs32025eab4a09.uqcloud.net/"; // the base url for search
     Response response1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,17 +87,9 @@ public class NavBaseActivity extends AppCompatActivity
         Fragment fragment = null;
 
         switch (id) {
-            case R.id.nav_home:
-                fragment = new HomeFragment();
-
-                break;
             case R.id.nav_kitchen:
                 fragment = new KitchenFragment();
-
                 break;
-//            case R.id.nav_planner:
-//                fragment = new PlannerFragment();
-//                break;
             case R.id.nav_search:
                 fragment = new SearchFragment();
                 break;
@@ -106,10 +99,7 @@ public class NavBaseActivity extends AppCompatActivity
             case R.id.nav_diet:
                 fragment = new DietFragment();
                 break;
-            case R.id.nav_account:
-                fragment = new AccountFragment();
 
-                break;
         }
 
        /** if (fragment != null) {
@@ -193,22 +183,11 @@ public class NavBaseActivity extends AppCompatActivity
         switch (id) {
             case "name":
                 fragment = new NameSearchFragment();
-
                 break;
             case "ingr":
                 fragment = new IngrSearchFragment();
-
                 break;
-            //case "":
-                //  fragment = new ;
-                // runReplaceTransaction(fragment);
-             //   break;
-           // case "":
-                //fragment = new IngrSearchFragment();
-                //runReplaceTransaction(fragment);
-             //   break;
         }
-
         runReplaceTransaction(fragment);
     }
 
@@ -234,13 +213,13 @@ public class NavBaseActivity extends AppCompatActivity
 
         searchGetRequest("search.php?terms="+searchTerms.toString());
 
-
-
         return response1;
     }
 
-
-
+    @Override
+    public Response runIngrSearch(TextInputEditText editText) {
+        return null;
+    }
 
 
 }

@@ -17,6 +17,10 @@ public interface OnFragmentInteractionListener {
 
     Response runNameSearch(TextInputEditText editText);
 
+    Response runIngrSearch(TextInputEditText editText);
+
+
+
 
 }
 
