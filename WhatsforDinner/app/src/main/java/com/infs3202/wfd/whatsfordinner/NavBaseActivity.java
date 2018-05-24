@@ -144,8 +144,8 @@ public class NavBaseActivity extends AppCompatActivity
             runReplaceTransaction(fragment);
         }
         else if (id == "") {
-            fragment = new ;
-            runReplaceTransaction(fragment);
+          //  fragment = new ;
+           // runReplaceTransaction(fragment);
         }
         else if (id == "ingr") {
             fragment = new IngrSearchFragment();
@@ -164,4 +164,11 @@ public class NavBaseActivity extends AppCompatActivity
         ft.addToBackStack(null);
         ft.commit();
     }
+
+
+
+
+
+
+
 }
