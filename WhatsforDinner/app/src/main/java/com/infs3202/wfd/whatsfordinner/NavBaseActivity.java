@@ -121,6 +121,7 @@ public class NavBaseActivity extends AppCompatActivity
        if (fragment != null) {
            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
            ft.replace(R.id.nav_content, fragment);
+           ft.addToBackStack(null);
            ft.commit();
        }
 
@@ -162,7 +163,6 @@ public class NavBaseActivity extends AppCompatActivity
                 if (!response.isSuccessful()){
                     throw new IOException("Unexpected code " + response);
                 } else {
-                    // do stuff with the result
                     response1 = response;
                 }
 
@@ -189,23 +189,27 @@ public class NavBaseActivity extends AppCompatActivity
      */
     @Override
     public void changeFragment(String id){
-        Fragment fragment;
-        if (id == "name") {
-            fragment = new NameSearchFragment();
-            runReplaceTransaction(fragment);
+        Fragment fragment = null;
+        switch (id) {
+            case "name":
+                fragment = new NameSearchFragment();
+
+                break;
+            case "ingr":
+                fragment = new IngrSearchFragment();
+
+                break;
+            //case "":
+                //  fragment = new ;
+                // runReplaceTransaction(fragment);
+             //   break;
+           // case "":
+                //fragment = new IngrSearchFragment();
+                //runReplaceTransaction(fragment);
+             //   break;
         }
-        else if (id == "ingr") {
-            fragment = new IngrSearchFragment();
-            runReplaceTransaction(fragment);
-        }
-        else if (id == "") {
-          //  fragment = new ;
-           // runReplaceTransaction(fragment);
-        }
-        else if (id == "") {
-            //fragment = new IngrSearchFragment();
-            //runReplaceTransaction(fragment);
-        }
+
+        runReplaceTransaction(fragment);
     }
 
     /** Creates a transaction which replaces the current fragment and adds it to the back stack

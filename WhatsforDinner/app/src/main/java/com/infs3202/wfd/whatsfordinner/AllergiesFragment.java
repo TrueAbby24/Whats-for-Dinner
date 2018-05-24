@@ -37,7 +37,6 @@ public class AllergiesFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         milkCheck = (CheckBox)getView().findViewById(R.id.checkBoxMilk);
         peanutsCheck = (CheckBox)getView().findViewById(R.id.checkBoxPeanuts);
         treeNutsCheck = (CheckBox)getView().findViewById(R.id.checkBoxTreeNuts);
@@ -46,6 +45,8 @@ public class AllergiesFragment extends Fragment {
         fishCheck = (CheckBox)getView().findViewById(R.id.checkBoxFish);
         shellfishCheck = (CheckBox)getView().findViewById(R.id.checkBoxShellfish);
         wheatCheck = (CheckBox)getView().findViewById(R.id.checkBoxWheat);
+        super.onCreate(savedInstanceState);
+
 
     }
 
