@@ -18,7 +18,7 @@ public class HttpRequest {
 			URL obj = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 			con.setRequestMethod("GET");
-			if( con.getResponseCode() != 200)
+			if( con.getResponseCode() != HttpURLConnection.HTTP_OK)
 				return "{}";
 //			System.out.println("\nSending 'GET' request to URL : " + url);
 //			System.out.println("Response Code : " + responseCode);
