@@ -30,6 +30,7 @@ public class NavBaseActivity extends AppCompatActivity
     String url = "https://infs32025eab4a09.uqcloud.net/"; // the base url for search
     Response response1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
