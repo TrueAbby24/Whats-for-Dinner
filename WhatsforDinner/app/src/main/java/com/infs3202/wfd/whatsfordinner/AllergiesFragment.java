@@ -49,14 +49,6 @@ public class AllergiesFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_allergies, container, false);
 
-        milkCheck = (CheckBox)getView().findViewById(R.id.checkBoxMilk);
-        peanutsCheck = (CheckBox)getView().findViewById(R.id.checkBoxPeanuts);
-        treeNutsCheck = (CheckBox)getView().findViewById(R.id.checkBoxTreeNuts);
-        eggsCheck = (CheckBox)getView().findViewById(R.id.checkBoxEggs);
-        soyCheck = (CheckBox)getView().findViewById(R.id.checkBoxSoy);
-        fishCheck = (CheckBox)getView().findViewById(R.id.checkBoxFish);
-        shellfishCheck = (CheckBox)getView().findViewById(R.id.checkBoxShellfish);
-        wheatCheck = (CheckBox)getView().findViewById(R.id.checkBoxWheat);
 
         return view;
     }
