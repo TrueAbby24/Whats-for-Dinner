@@ -118,7 +118,7 @@ public class WebScrape {
 		con.setDoOutput(true);
 		OutputStream os = con.getOutputStream();
 //		os.write("email=bloubulle@pretoria.co.za&name=Vic".getBytes());
-		os.write("email=sid@gmail.com&password=siddy".getBytes());
+		os.write("email=489789789&password=siddy".getBytes());
 		os.flush();	
 		os.close();
 		// For POST only - END

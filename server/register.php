@@ -18,7 +18,7 @@
     // else
     //   echo "fail";
 
-    $statement = mysqli_prepare($con, "SELECT * FROM user WHERE email_address = '?'");
+    $statement = $mysqli->prepare($con, "SELECT * FROM user WHERE email_address = '?'");
     if ($statement == false)
       echo "false\n";
     else
