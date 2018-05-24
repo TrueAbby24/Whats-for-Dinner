@@ -15,8 +15,6 @@ import org.jsoup.nodes.Element;
 
 public class WebScrape {
 
-
-
 	private static void imdbExample() throws IOException{
 		final Document doc = Jsoup.connect("https://www.imdb.com/chart/top").get();
 		
@@ -51,20 +49,7 @@ public class WebScrape {
 //		System.out.println("TOTAL: " + i);
 	}
 	
-	public static void main(String[] args) throws Exception {
-//		imdbExample();
-//		firstTry();
-		
-//		SEARCH TERMS
-		SearchTerms terms = new SearchTerms();
-		terms.addDietReq("vegan");
-		terms.addAllergies("nuts");
-		terms.addAllergies("nuts");
-		terms.addKeywords("white chocolate");
-		terms.addIngredients("flour");
-		terms.addIngredients("egg");
-		System.out.println("(C) search terms:");
-		System.out.println(terms.toString());
+	private static void originalLibFunctionality() {
 //		SEARCH		
 //		SearchServer s = new SearchServer(terms.toString());
 //		System.out.println("(S) Search results:");
@@ -98,6 +83,25 @@ public class WebScrape {
 //			System.out.println(i+"-->"+x);
 //		}
 		
+	}
+	
+	public static void main(String[] args) throws Exception {
+//		imdbExample();
+//		firstTry();
+//		originalLibFunctionality();
+//		SEARCH TERMS
+		SearchTerms terms = new SearchTerms();
+		terms.addDietReq("vegan");
+		terms.addAllergies("nuts");
+		terms.addAllergies("nuts");
+		terms.addKeywords("white chocolate");
+		terms.addIngredients("flour");
+		terms.addIngredients("egg");
+		System.out.println("(C) search terms:");
+		System.out.println(terms.toString());
+		System.out.println(HttpRequest.getSearchResults(terms.toString()));
+		System.out.println(HttpRequest.getRecipe("257193"));
+
 		
 	}
 }

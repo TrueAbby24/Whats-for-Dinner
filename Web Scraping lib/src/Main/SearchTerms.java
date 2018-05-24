@@ -177,7 +177,7 @@ public class SearchTerms {
 		for (typeArray x : typeArray.values()) {
 			buffer.put(x, getCorrespondingArray(x));
 		}
-		return buffer.toString();
+		return buffer.toString().replace(" ", "%20").replace("\"", "%22");
 	}
 }
 
