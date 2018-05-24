@@ -13,11 +13,11 @@ import com.infs3202.wfd.whatsfordinner.RecipeFragment;
 
 import java.util.ArrayList;
 
-public class IngrListAdapter extends RecyclerView.Adapter<IngrListAdapter.ViewHolder> {
+//public class IngrListAdapter extends RecyclerView.Adapter<IngrListAdapter.ViewHolder> {
 
-    private String[] mDataset;
+  //  private String[] mDataset;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    //public static class ViewHolder extends RecyclerView.ViewHolder {
 
-    }
-}
+   // }
+//}

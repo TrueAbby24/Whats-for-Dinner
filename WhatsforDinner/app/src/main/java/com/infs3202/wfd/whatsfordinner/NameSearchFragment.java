@@ -8,6 +8,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import org.json.simple.parser.ParseException;
+
+import Main.SearchResultsClient;
+import okhttp3.Response;
 
 
 /**
@@ -26,11 +32,7 @@ public class NameSearchFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
-
-
     }
 
     @Override
@@ -58,9 +60,12 @@ public class NameSearchFragment extends Fragment {
         }
     }
 
-    public void onNameSearchButtonClick(View view){
-        searchParam = (TextInputEditText)findViewById(R.id.nameSearchParam);
-        searchCallback.getNameSearchParam(searchParam);
+    public void onNameSearchButtonClick(View view) throws ParseException {
+        searchParam = (TextInputEditText)getView().findViewById(R.id.nameSearchParam);
+        Response result;
+        result = searchCallback.runNameSearch(searchParam);
+        SearchResultsClient src = new SearchResultsClient(result.toString());
+
     }
 
 }
