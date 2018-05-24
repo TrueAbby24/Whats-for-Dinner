@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.json.simple.parser.ParseException;
 
@@ -24,7 +25,7 @@ import okhttp3.Response;
  */
 public class NameSearchFragment extends Fragment {
 
-    OnFragmentInteractionListener searchCallback;
+    private OnFragmentInteractionListener mListener;
     TextInputEditText searchParam;
 
     public NameSearchFragment() {
@@ -40,9 +41,27 @@ public class NameSearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_name_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_name_search, container, false);
+        final TextView test = (TextView) view.findViewById(R.id.testtext);
+        Button searchButton = (Button) view.findViewById(R.id.nSearch);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
 
+                searchParam = (TextInputEditText)getView().findViewById(R.id.nameSearchParam);
+                Response result;
+                result = mListener.runNameSearch(searchParam);
+                Log.v("response return", result.toString());
+                try {
+                    SearchResultsClient src = new SearchResultsClient(result.toString());
+                    test.setText((CharSequence) src);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
+        return view;
     }
 
     /**
@@ -54,21 +73,29 @@ public class NameSearchFragment extends Fragment {
         super.onAttach(activity);
 
         try {
-            searchCallback = (OnFragmentInteractionListener) activity;
+            mListener = (OnFragmentInteractionListener) activity;
         }catch (ClassCastException e){
             throw new ClassCastException(activity.toString()
             + " must implement OnNameSearchListener");
         }
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+
+    }
+
+/**
     public void onNameSearchButtonClick(View view) throws ParseException {
         searchParam = (TextInputEditText)getView().findViewById(R.id.nameSearchParam);
         Response result;
-        result = searchCallback.runNameSearch(searchParam);
+        result = mListener.runNameSearch(searchParam);
         Log.v("response return", result.toString());
         SearchResultsClient src = new SearchResultsClient(result.toString());
 
 
     }
-
+**/
 }
