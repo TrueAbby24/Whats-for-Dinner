@@ -15,9 +15,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class IngrSearchFragment extends Fragment {
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+   // private RecyclerView mRecyclerView;
+   // private RecyclerView.Adapter mAdapter;
+   // private RecyclerView.LayoutManager mLayoutManager;
 
     public IngrSearchFragment() {
         // Required empty public constructor
@@ -27,8 +27,8 @@ public class IngrSearchFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.IngrSearchFragment);
-        mRecyclerView = (RecyclerView) findViewById(R.id.ingrRecyclerView);
+        //setContentView(R.layout.IngrSearchFragment);
+       // mRecyclerView = (RecyclerView) findViewById(R.id.ingrRecyclerView);
     }
 
     @Override

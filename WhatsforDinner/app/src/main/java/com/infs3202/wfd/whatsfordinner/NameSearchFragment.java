@@ -21,6 +21,7 @@ public class NameSearchFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
     }
 
@@ -30,5 +31,11 @@ public class NameSearchFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_name_search, container, false);
     }
+
+    /**
+     *  Send parameters for search by recipe name
+     *
+     */
+
 
 }

@@ -1,6 +1,7 @@
 package com.infs3202.wfd.whatsfordinner;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
  */
 public class SearchFragment extends Fragment {
 
+    private OnFragmentInteractionListener mListener;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -31,6 +33,34 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search, container, false);
+
+
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (OnFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+
+    }
+
+    public void nameSearchClick(View view) {
+        mListener.changeFragment("name");
+    }
+
+    public void ingrSearchClick(View view) {
+        mListener.changeFragment("ingr");
     }
 
 }

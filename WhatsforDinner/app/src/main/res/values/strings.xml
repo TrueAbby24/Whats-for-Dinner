@@ -48,5 +48,6 @@
     <string name="title_activity_fsgdfg">fsgdfg</string>
     <string name="searchByIngr">Search by Ingredient</string>
     <string name="searchByName">Search by Name</string>
+    <string name="Save">Save</string>
 
 </resources>

@@ -13,7 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class NavBaseActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OnFragmentInteractionListener {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,5 +125,43 @@ public class NavBaseActivity extends AppCompatActivity
         displaySelectedScreen(id);
 
         return true;
+    }
+
+    /**
+     *  Used to opem a new fragment based off the id provided.
+     *
+     * @param id String indicating which fragment is to replace the current
+     */
+    @Override
+    public void changeFragment(String id){
+        Fragment fragment;
+        if (id == "name") {
+            fragment = new NameSearchFragment();
+            runReplaceTransaction(fragment);
+        }
+        else if (id == "ingr") {
+            fragment = new IngrSearchFragment();
+            runReplaceTransaction(fragment);
+        }
+        else if (id == "") {
+            fragment = new ;
+            runReplaceTransaction(fragment);
+        }
+        else if (id == "ingr") {
+            fragment = new IngrSearchFragment();
+            runReplaceTransaction(fragment);
+        }
+    }
+
+    /** Creates a transaction which replaces the current fragment and adds it to the back stack
+     *  before committing it.
+     *
+     * @param newFragment This is the fragment that is used to replace the current fragment
+     */
+    public void runReplaceTransaction(Fragment newFragment){
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.nav_content, newFragment);
+        ft.addToBackStack(null);
+        ft.commit();
     }
 }
