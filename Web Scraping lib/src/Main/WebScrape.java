@@ -158,5 +158,10 @@ public class WebScrape {
 //		sendPOST();email=456rftyjhbn&password=siddy
 //		System.out.println(HttpRequest.register("abby.alyssa@gmail.com", "abc123", "chocolate"));
 		System.out.println(HttpRequest.getFavRecipes("pieter@vanDieOosrand.com"));
+//		System.out.println(HttpRequest.deleteAllergy(email, allergy));
+		System.out.println(HttpRequest.insertAllergy("pieter@vanDieOosrand.com", "groente"));
+		System.out.println(HttpRequest.insertFavRecipe("pieter@vanDieOosrand.com", "123456"));
+		System.out.println(HttpRequest.deleteAllergy("pieter@vanDieOosrand.com", "groente"));
+		System.out.println(HttpRequest.deleteFavRecipe("pieter@vanDieOosrand.com", "123456"));
 	}
 }
