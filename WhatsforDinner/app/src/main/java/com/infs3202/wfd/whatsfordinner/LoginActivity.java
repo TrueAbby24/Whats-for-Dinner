@@ -60,6 +60,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+//        user1 = new User();
+
         loginEmail = (EditText) findViewById(R.id.login_email);
         loginPassword = (EditText) findViewById(R.id.login_password);
 
@@ -70,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void registerClick(View view){
-        Intent intent = new Intent(this, DietActivity.class);
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
 
@@ -87,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(success){
                         Intent intent = new Intent(LoginActivity.this, NavBaseActivity.class);
+                        intent.putExtra("email", email);
                         LoginActivity.this.startActivity(intent);
 
                     }else{
