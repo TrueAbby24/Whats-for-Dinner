@@ -102,10 +102,8 @@ public class WebScrape {
 		terms.addKeywords("white chocolate");
 		terms.addIngredients("flour");
 		terms.addIngredients("egg");
-		System.out.println("(C) search terms:");
-		System.out.println(terms.toString());
 		System.out.println(HttpRequest.getSearchResults(terms.toString()));
-		System.out.println(HttpRequest.getRecipe("257193"));
+//		System.out.println(HttpRequest.getRecipe("257193"));
 
 	}
 	private static void sendPOST() throws IOException {
@@ -154,14 +152,25 @@ public class WebScrape {
 //		imdbExample();
 //		firstTry();
 //		originalLibFunctionality();
-//		testHttpRequest();
+		testHttpRequest();
 //		sendPOST();email=456rftyjhbn&password=siddy
 //		System.out.println(HttpRequest.register("abby.alyssa@gmail.com", "abc123", "chocolate"));
-		System.out.println(HttpRequest.getFavRecipes("pieter@vanDieOosrand.com"));
-//		System.out.println(HttpRequest.deleteAllergy(email, allergy));
-		System.out.println(HttpRequest.insertAllergy("pieter@vanDieOosrand.com", "groente"));
-		System.out.println(HttpRequest.insertFavRecipe("pieter@vanDieOosrand.com", "123456"));
-		System.out.println(HttpRequest.deleteAllergy("pieter@vanDieOosrand.com", "groente"));
-		System.out.println(HttpRequest.deleteFavRecipe("pieter@vanDieOosrand.com", "123456"));
+//		System.out.println(HttpRequest.getFavRecipes("pieter@vanDieOosrand.com"));
+////		System.out.println(HttpRequest.deleteAllergy(email, allergy));
+//		System.out.println(HttpRequest.insertAllergy("pieter@vanDieOosrand.com", "groente"));
+//		System.out.println(HttpRequest.insertFavRecipe("pieter@vanDieOosrand.com", "123456"));
+//		System.out.println(HttpRequest.insertAllergy("abby.alyssa@gmail.com","fish"));
+//		System.out.println(HttpRequest.insertFavRecipe("abby.alyssa@gmail.com","21"));
+//		System.out.println(HttpRequest.insertFavRecipe("bloubulle@pretoria.co.za","4"));
+//		System.out.println(HttpRequest.insertFavRecipe("laduma@gmail.com","8"));
+//		System.out.println(HttpRequest.insertFavRecipe("laduma@gmail.com","9"));
+//		System.out.println(HttpRequest.insertAllergy("bloubulle@pretoria.co.za","egg"));
+//		System.out.println(HttpRequest.insertAllergy("bloubulle@pretoria.co.za","gluten"));
+//		System.out.println(HttpRequest.insertAllergy("laduma@gmail.com"));
+//		System.out.println(HttpRequest.insertAllergy());
+		
+		
+				
+		
 	}
 }
