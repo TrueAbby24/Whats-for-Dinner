@@ -111,6 +111,12 @@ public class HttpRequest {
 		
 	}
 	
+	
+	public static boolean register(String email, String password, String diet) {
+		String params = "email="+email+"&password="+password+"&diet="+diet; 
+		return getSuccess(sendPost(BASE_URL + "rego.php", params));
+	}
+	
 	public static boolean tryLogin(String email, String password) {
 		String params = "email="+email+"&password="+password; 
 		return getSuccess(sendPost(BASE_URL + "login.php", params));
