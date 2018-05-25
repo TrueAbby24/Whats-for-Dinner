@@ -30,7 +30,7 @@ public class RecipeServer {
 			recipeID = args[0];
 		} catch (Exception e) {
 			System.out.println((new JSONObject()).toString());
-			return;
+			return;-
 		}
 		findDetails();
 		if (success) 

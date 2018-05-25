@@ -2,9 +2,13 @@ package com.infs3202.wfd.whatsfordinner;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +17,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.json.simple.parser.ParseException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import Main.SearchResultsClient;
 import okhttp3.Response;
@@ -29,6 +36,15 @@ public class NameSearchFragment extends Fragment {
     public TextInputEditText searchParam;
     public TextView test;
     public Button searchButton;
+
+    private Context mContext;
+    private ConstraintLayout mConstraintLayout;
+
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+    final List<String> recipeList = new ArrayList(); //fill this to fill recyclerview
 
     public NameSearchFragment() {
         // Required empty public constructor
@@ -62,6 +78,19 @@ public class NameSearchFragment extends Fragment {
                 }
             }
         });
+
+
+        mContext = getContext();
+        mConstraintLayout = (ConstraintLayout) view.findViewById(R.id.nameConstraintLayout);
+
+
+        mRecyclerView = (RecyclerView)view.findViewById(R.id.nameRecycleView);
+
+        mLayoutManager = new LinearLayoutManager(this.getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new NameSearchAdapter(mContext, recipeList);
+        mRecyclerView.setAdapter(mAdapter);
 
         return view;
     }
