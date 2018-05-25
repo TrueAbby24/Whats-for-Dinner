@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import Main.RecipeMiniClient;
+import Main.SearchResultsClient;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,14 +68,24 @@ public class IngrSearchResultsFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new IngrResultAdapter(mContext, recipeList);
-        mRecyclerView.setAdapter(mAdapter);
+
+
+        List<String> list = mListener.getIngrList();
+
+        SearchResultsClient results = mListener.runIngrSearch(list);
+
+        RecipeMiniClient mini = results.getRecipeMini();
+        List<RecipeMiniClient> listResults = new ArrayList();
+        while (mini != null) {
+            mini = results.getRecipeMini();
+            listResults.add(mini);
+        }
 
         createListener(returnToIngr, "ingrReturn");
-
         //not sure if more is needed to populate the list
         //need to get list to fill recipeList on creation
-        //return to ingrSelect when button is pressed
+        mAdapter = new IngrResultAdapter(mContext, listResults);
+        mRecyclerView.setAdapter(mAdapter);
 
 
         return view;

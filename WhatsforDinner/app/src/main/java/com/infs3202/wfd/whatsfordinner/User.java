@@ -12,6 +12,7 @@ public class User {
     private ArrayList<String> allergies;
     private String otherAllergy;
     private String otherDietReq;
+    private String password;
 
 
 
@@ -66,12 +67,15 @@ public class User {
         return result;
    }
 
-    public String[] getAllergy() {
-        String[]  result = new String[allergies.size()];
+    public String getAllergy() {
+        String res = "";
         for (int i = 0; i < allergies.size(); i++){
-            result[i] = allergies.get(i);
+            if (i == 0)
+                res = allergies.get(i);
+            else
+                res += ","+allergies.get(i);
         }
-        return result;
+        return res;
     }
 
     public void addAllergy(String s) {
@@ -96,6 +100,12 @@ public class User {
     public String getOtherDietReq() {
         return otherDietReq;
     }
+    public String getPassword() {return password;}
+    public  void setPassword(String pass) {
+        password = pass;
+    }
+
+
 
 }
 

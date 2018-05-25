@@ -11,15 +11,21 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import Main.RecipeClient;
+
 /**
  * Created by s4285131 on 25/05/2018.
  */
 
 public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.ViewHolder> {
-    private List<String> mDataset;
+    private List<RecipeClient> mDataset;
+    //                recipeData.getCookingTime();
+//                recipeData.getTitle();
+//                recipeData.getServingSize();
+//                recipeData.getCalories();
     private Context mContext;
 
-    public KitchenAdapter(Context context, List<String> list) {
+    public KitchenAdapter(Context context, List<RecipeClient> list) {
         mDataset = list;
         mContext = context;
     }
@@ -36,7 +42,7 @@ public class KitchenAdapter extends RecyclerView.Adapter<KitchenAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(KitchenAdapter.ViewHolder holder, int position) {
-        holder.mTitle.setText((String)mDataset.get(position));
+        holder.mTitle.setText((String)mDataset.get(position).getTitle());
 
     }
 

@@ -10,38 +10,38 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import Main.HttpRequest;
+
 
 /**
  * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link AllergiesFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link AllergiesFragment#newInstance} factory method to
+ * Activities thactory method to
  * create an instance of this fragment.
  */
 public class AllergiesFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private User user;
+    private CheckBox[] checkBoxArray = {};
 
-    CheckBox[] checkBoxArray = {};
+    private  CheckBox checkMilk;
+    private  CheckBox checkPeanut;
+    private CheckBox checkTreeNut;
+    private CheckBox checkEgg;
+    private CheckBox checkSoy;
+    private CheckBox checkFish;
+    private CheckBox checkShellFish;
+    private CheckBox checkWheat;
+    private TextInputEditText other;
+    private Button saveBtn;
 
-    CheckBox checkMilk;
-    CheckBox checkPeanut;
-    CheckBox checkTreeNut;
-    CheckBox checkEgg;
-    CheckBox checkSoy;
-    CheckBox checkFish;
-    CheckBox checkShellFish;
-    CheckBox checkWheat;
-    TextInputEditText other;
-    Button saveBtn;
-
-    List<String> checked;
+    private List<String> checked;
 
     public AllergiesFragment() {
         // Required empty public constructor
@@ -85,13 +85,17 @@ public class AllergiesFragment extends Fragment {
         checkBoxList.add(checkShellFish);
         checkBoxList.add(checkWheat);
 
+        user = mListener.getUserDetails();
+
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checked.clear();
                 checkBoxChecked(checkBoxList);
                 // send to server/db
-                // move to next nav base activity
+                if(!HttpRequest.insertAllergy(user.geteMail(), user.getAllergy())) {
+                    Toast.makeText(getContext(), "Catastrophic failure! Could not connect to server!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

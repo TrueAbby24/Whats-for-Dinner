@@ -67,7 +67,7 @@ public class NameSearchFragment extends Fragment {
             public void onClick(View view){
 
                 searchParam = (TextInputEditText)getView().findViewById(R.id.nameSearchParam);
-                Response result;
+                SearchResultsClient result;
                 result = mListener.runNameSearch(searchParam);
                 Log.v("response return", result.toString());
                 try {

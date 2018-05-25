@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import Main.SearchResultsClient;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,6 +52,7 @@ public class IngrSearchFragment extends Fragment {
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,6 +64,7 @@ public class IngrSearchFragment extends Fragment {
         mLinearLayout = (LinearLayout) view.findViewById(R.id.layout);
 
         mButtonAdd = (Button) view.findViewById(R.id.add_btn);
+        mButtonSearch = (Button) view.findViewById(R.id.ingrSearchBtn);
         ingredientItem = (TextInputEditText) view.findViewById(R.id.ingredientInput);
 
         mRecyclerView = (RecyclerView)view.findViewById(R.id.ingrRecycleView);
@@ -102,16 +106,22 @@ public class IngrSearchFragment extends Fragment {
                 Toast.makeText(mContext, "Added: " + itemLabel, Toast.LENGTH_SHORT).show();
             }
         });
-        mButtonSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            // When button is pressed take string values and add to search terms object
-                // open new fragment to display results
-            }
-        });
+
+        createListener(mButtonSearch, "ingrSearch");
+        mListener.setIngrList(ingredientList);
 
         return view;
     }
+
+    public void createListener(Button btn, final String id){
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                mListener.changeFragment(id);
+            }
+        });
+    }
+
 
 
 

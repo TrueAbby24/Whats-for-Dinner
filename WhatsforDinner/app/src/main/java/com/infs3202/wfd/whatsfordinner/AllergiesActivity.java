@@ -7,14 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import Main.HttpRequest;
+
 public class AllergiesActivity extends AppCompatActivity {
     private String email;
     private String diet;
+    private String password;
 
     private CheckBox[] checkBoxArray = {};
 
@@ -38,6 +42,7 @@ public class AllergiesActivity extends AppCompatActivity {
 
         email = getIntent().getStringExtra("email");
         diet = getIntent().getStringExtra("diet");
+        password = getIntent().getStringExtra("password");
 
         checkMilk = (CheckBox) findViewById(R.id.checkBoxMilk);
         checkPeanut = (CheckBox) findViewById(R.id.checkBoxPeanuts);
@@ -79,11 +84,14 @@ public class AllergiesActivity extends AppCompatActivity {
                 }
 
                 //send to server
-
+                if(!HttpRequest.insertAllergy(email, allergies)) {
+                    Toast.makeText(getBaseContext(), "Catastrophic failure! Could not connect to server!", Toast.LENGTH_SHORT).show();
+                }
                 Intent intent = new Intent(getBaseContext(), NavBaseActivity.class);
                 intent.putExtra("email", email);
                 intent.putExtra("diet", diet);
                 intent.putExtra("allergies", allergies);
+                intent.putExtra("password", password);
                 startActivity(intent);
             }
         });

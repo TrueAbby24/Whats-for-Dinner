@@ -9,17 +9,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import Main.RecipeMiniClient;
 
 /**
  * Created by s4285131 on 25/05/2018.
  */
 
 public class IngrResultAdapter extends RecyclerView.Adapter<IngrResultAdapter.ViewHolder> {
-    private List<String> mDataset;
+    private List<RecipeMiniClient> mDataset;
     private Context mContext;
 
-    public IngrResultAdapter(Context context, List<String> list) {
+    public IngrResultAdapter(Context context, List<RecipeMiniClient> list) {
         mDataset = list;
         mContext = context;
     }
@@ -34,7 +37,11 @@ public class IngrResultAdapter extends RecyclerView.Adapter<IngrResultAdapter.Vi
 
     @Override
     public void onBindViewHolder(IngrResultAdapter.ViewHolder holder, int position) {
-        holder.mTitle.setText((String)mDataset.get(position));
+        holder.mTitle.setText((String)mDataset.get(position).getTitle());
+//        holder.mImage.setText((String)mDataset.get(position).getImgUrl());
+        holder.mBlurb.setText((String)mDataset.get(position).getBlurb());
+        holder.mId = mDataset.get(position).getTitle();
+
 
     }
 
@@ -43,6 +50,8 @@ public class IngrResultAdapter extends RecyclerView.Adapter<IngrResultAdapter.Vi
         return mDataset.size();
     }
 
+
+
     /**
      * Class for viewholder objects (the things displayed in the recycler list)
      */
@@ -50,6 +59,7 @@ public class IngrResultAdapter extends RecyclerView.Adapter<IngrResultAdapter.Vi
         public ImageView mImage;
         public TextView mTitle;
         public TextView mBlurb;
+        public String mId;
         public ConstraintLayout mConstraintLayout;
 
 

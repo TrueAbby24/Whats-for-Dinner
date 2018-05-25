@@ -82,13 +82,13 @@ public class DietActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), "Unable to register, please try again", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getBaseContext(), RegisterActivity.class);
                         startActivity(intent);
-                    }
-                    password = null;
-
-                    Intent intent = new Intent(getBaseContext(), AllergiesActivity.class);
-                    intent.putExtra("email", email);
-                    intent.putExtra("diet", diet);
-                    startActivity(intent);
+                    } //else {
+                        Intent intent = new Intent(getBaseContext(), AllergiesActivity.class);
+                        intent.putExtra("email", email);
+                        intent.putExtra("password", password);
+                        intent.putExtra("diet", diet);
+                        startActivity(intent);
+                   // }
 
             }
 
