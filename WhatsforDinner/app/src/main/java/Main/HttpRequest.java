@@ -122,4 +122,9 @@ public class HttpRequest {
 		return getSuccess(sendPost(BASE_URL + "login.php", params));
 	}
 	
+	public static boolean updateDiet(String email, String diet) {
+		String params = "email="+email+"&diet="+diet; 
+		return getSuccess(sendPost(BASE_URL + "updatediet.php", params));
+	}
+	
 }
