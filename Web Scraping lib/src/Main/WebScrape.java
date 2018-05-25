@@ -156,7 +156,7 @@ public class WebScrape {
 //		originalLibFunctionality();
 //		testHttpRequest();
 //		sendPOST();email=456rftyjhbn&password=siddy
-		System.out.println(HttpRequest.register("abby.alyssa@gmail.com", "abc123", "chocolate"));
-		
+//		System.out.println(HttpRequest.register("abby.alyssa@gmail.com", "abc123", "chocolate"));
+		System.out.println(HttpRequest.getFavRecipes("pieter@vanDieOosrand.com"));
 	}
 }

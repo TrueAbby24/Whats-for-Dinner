@@ -34,9 +34,9 @@ $count = 0;
 mysqli_stmt_bind_result($statement, $data);
 while (mysqli_stmt_fetch($statement)) {
   if ($count == 0)
-    $result = $data;
+    $result = "\"".$data."\"";
   else
-    $result = $result.",".$data;
+    $result = $result.",\"".$data."\"";
   $count++;
 }
 
