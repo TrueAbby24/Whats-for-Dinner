@@ -5,6 +5,9 @@
     android:id="@+id/miniLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></LinearLayout>
 
     <ImageView
         android:id="@+id/miniImage"
@@ -32,7 +35,16 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toEndOf="@+id/miniTitle"
-        tools:layout_editor_absoluteY="29dp" />
+        tools:layout_editor_absoluteY="31dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cook!"
+        tools:layout_editor_absoluteX="294dp"
+        tools:layout_editor_absoluteY="15dp" />
+
 </android.support.constraint.ConstraintLayout>

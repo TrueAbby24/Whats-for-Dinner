@@ -1,7 +1,12 @@
 package com.infs3202.wfd.whatsfordinner;
 
 import android.support.design.widget.TextInputEditText;
+import android.widget.Button;
 
+import java.util.List;
+
+import Main.RecipeClient;
+import Main.SearchResultsClient;
 import okhttp3.Response;
 
 /**
@@ -15,11 +20,17 @@ public interface OnFragmentInteractionListener {
      */
     void changeFragment(String id);
 
-    Response runNameSearch(TextInputEditText editText);
+    SearchResultsClient runNameSearch(TextInputEditText editText);
 
-    Response runIngrSearch(TextInputEditText editText);
+    SearchResultsClient runIngrSearch(List<String> list);
 
+    User getUserDetails();
 
+    List<String> getIngrList();
+
+    void setIngrList(List<String> list);
+
+    void recipePopulate (RecipeClient recipe);
 
 
 }

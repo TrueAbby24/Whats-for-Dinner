@@ -14,10 +14,18 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 import java.io.IOException;
+import java.util.List;
 
+import Main.HttpRequest;
+import Main.RecipeClient;
+import Main.RecipeMiniClient;
+import Main.SearchResultsClient;
 import Main.SearchTerms;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -32,6 +40,7 @@ public class NavBaseActivity extends AppCompatActivity
     private String email;
     private String diet;
     private String allergies;
+    private List<String> ingredients;
 
 
     @Override
@@ -45,6 +54,7 @@ public class NavBaseActivity extends AppCompatActivity
 
         user1 = new User();
         user1.setEmail(email);
+        user1.setPassword(getIntent().getStringExtra("password"));
 
         for (String s : diet.split(",")){
             user1.addDiet(s);
@@ -66,7 +76,7 @@ public class NavBaseActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        displaySelectedScreen(R.id.nav_home);
+        displaySelectedScreen(R.id.nav_kitchen);
     }
 
     @Override
@@ -149,48 +159,9 @@ public class NavBaseActivity extends AppCompatActivity
         return true;
     }
 
-    public User userDetails(){
+    public User getUserDetails(){
         return user1;
     }
-
-
-//    public void searchGetRequest(String jsonString){
-//        // setting up okhttp
-//        OkHttpClient client = new OkHttpClient();
-//
-//        Request request = new Request.Builder()
-//                .url(url + jsonString)
-//                .get()
-//                .build();
-//
-//
-//        client.newCall(request).enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                if (!response.isSuccessful()){
-//                    throw new IOException("Unexpected code " + response);
-//                } else {
-//                    response1 = response;
-//                }
-//
-//            }
-//        });
-//
-//    }
-
-
-
-
-
-
-
-
-
 
     // FRAGMENT SHENANIGANS
 
@@ -212,6 +183,12 @@ public class NavBaseActivity extends AppCompatActivity
             case "ingrReturn":
                 fragment = new IngrSearchFragment();
                 break;
+            case "ingrSearch":
+                fragment = new IngrSearchResultsFragment();
+                break;
+            case "recipe":
+                fragment = new RecipeFragment();
+                break;
         }
         runReplaceTransaction(fragment);
     }
@@ -229,22 +206,74 @@ public class NavBaseActivity extends AppCompatActivity
     }
 
     @Override
-    public Response runNameSearch(TextInputEditText editText){
+    public SearchResultsClient runNameSearch(TextInputEditText editText){
         String nameParam = editText.getText().toString();
 
         SearchTerms searchTerms = new SearchTerms();
         searchTerms.addKeywords(nameParam);
-        // Need to get and add diet and allergies to searchTerms as well
 
+        for (String s : diet.split(",")){
+            searchTerms.addDietReq(s);
+        }
+        for (String s : allergies.split(",")){
+            searchTerms.addAllergies(s);
+        }
+        String data =  HttpRequest.getSearchResults(searchTerms.toString());
+        SearchResultsClient results = null;
+        try {
+            results = new SearchResultsClient(data);
+        } catch (Exception e) {
+            Toast.makeText(this, "ERROR: Unable to retrieve search results.", Toast.LENGTH_SHORT).show();
+        }
 
-
-        return null;
+        return results;
     }
 
-    @Override
-    public Response runIngrSearch(TextInputEditText editText) {
-        return null;
+
+
+
+    public SearchResultsClient runIngrSearch(List<String> list){
+
+
+        SearchTerms searchTerms = new SearchTerms();
+
+        for (String s : diet.split(",")){
+            searchTerms.addDietReq(s);
+        }
+        for (String s : allergies.split(",")){
+            searchTerms.addAllergies(s);
+        }
+        for (String s : list){
+            searchTerms.addIngredients(s);
+        }
+        String data =  HttpRequest.getSearchResults(searchTerms.toString());
+        SearchResultsClient results = null;
+        try {
+            results = new SearchResultsClient(data);
+        } catch (Exception e) {
+            Toast.makeText(this, "ERROR: Unable to retrieve search results.", Toast.LENGTH_SHORT).show();
+        }
+
+        return results;
     }
+
+    public List<String> getIngrList(){
+        return ingredients;
+    }
+
+    public void setIngrList(List<String> list){
+        ingredients = list;
+    }
+
+    public void recipePopulate (RecipeClient recipe) {
+
+    }
+
+    public void onClick(View view) {
+
+    }
+
+
 
 
 }

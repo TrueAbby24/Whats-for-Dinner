@@ -1,6 +1,7 @@
 package com.infs3202.wfd.whatsfordinner;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -10,10 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import Main.HttpRequest;
 
 
 /**
@@ -23,7 +27,7 @@ import java.util.List;
 public class DietFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-
+    private User user;
     CheckBox[] checkBoxArray = {};
 
     CheckBox vegCheck;
@@ -71,6 +75,7 @@ public class DietFragment extends Fragment {
         checkBoxList.add(veganCheck);
         checkBoxList.add(glutenCheck);
         checkBoxList.add(lactoseCheck);
+        user = mListener.getUserDetails();
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,10 +83,26 @@ public class DietFragment extends Fragment {
                 checked.clear();
                 checkBoxChecked(checkBoxList);
                 // send to server/db
-            }
-        });
 
-        
+                String diet = null;
+                for (String s :  user.getDiet()) {
+                    if (diet == null)
+                        diet = s;
+                    else
+                        diet += ","+s;
+                }
+                diet = diet == null ? "" : diet;
+                boolean success = HttpRequest.register(user.geteMail(), user.getPassword(), diet);
+                    if (!success) {
+
+                        Toast.makeText(getContext(), "Unable to register, please try again", Toast.LENGTH_SHORT).show();
+//                        Intent intent = new Intent(getContext(), RegisterActivity.class);
+//                        startActivity(intent);
+                    }
+                }
+
+            }
+        );
 
 
         return view;
