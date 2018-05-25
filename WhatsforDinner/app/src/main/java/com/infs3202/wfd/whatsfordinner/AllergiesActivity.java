@@ -1,5 +1,6 @@
 package com.infs3202.wfd.whatsfordinner;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,25 +13,31 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AllergiesActivity extends AppCompatActivity {
-    CheckBox[] checkBoxArray = {};
+    private String email;
+    private String diet;
 
-    CheckBox checkMilk;
-    CheckBox checkPeanut;
-    CheckBox checkTreeNut;
-    CheckBox checkEgg;
-    CheckBox checkSoy;
-    CheckBox checkFish;
-    CheckBox checkShellFish;
-    CheckBox checkWheat;
-    TextInputEditText other;
-    Button nextBtn;
+    private CheckBox[] checkBoxArray = {};
 
-    List<String> checked;
+    private CheckBox checkMilk;
+    private CheckBox checkPeanut;
+    private CheckBox checkTreeNut;
+    private CheckBox checkEgg;
+    private CheckBox checkSoy;
+    private CheckBox checkFish;
+    private CheckBox checkShellFish;
+    private CheckBox checkWheat;
+    private TextInputEditText other;
+    private Button nextBtn;
+
+    private List<String> checked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allergies);
+
+        email = getIntent().getStringExtra("email");
+        diet = getIntent().getStringExtra("diet");
 
         checkMilk = (CheckBox) findViewById(R.id.checkBoxMilk);
         checkPeanut = (CheckBox) findViewById(R.id.checkBoxPeanuts);
@@ -59,7 +66,25 @@ public class AllergiesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 checked.clear();
                 checkBoxChecked(checkBoxList);
-                // send to server/db
+                String allergies = null;
+                for (String s : checked) {
+                    if (allergies == null)
+                        allergies = s;
+                    else
+                        allergies += "," + s;
+                }
+                other = (TextInputEditText) findViewById(R.id.dietOther);
+                if (other.getText() != null) {
+                    allergies += "," + other.getText().toString();
+                }
+
+                //send to server
+
+                Intent intent = new Intent(getBaseContext(), NavBaseActivity.class);
+                intent.putExtra("email", email);
+                intent.putExtra("diet", diet);
+                intent.putExtra("allergies", allergies);
+                startActivity(intent);
             }
         });
     }

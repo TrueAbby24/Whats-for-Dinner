@@ -27,14 +27,32 @@ import okhttp3.Response;
 
 public class NavBaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnFragmentInteractionListener {
-    String url = "https://infs32025eab4a09.uqcloud.net/"; // the base url for search
-    Response response1;
+    private final String url = "https://infs32025eab4a09.uqcloud.net/"; // the base url for search
+    public User user1;
+    private String email;
+    private String diet;
+    private String allergies;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_base);
+
+        email = getIntent().getStringExtra("email");
+        diet = getIntent().getStringExtra("diet");
+        allergies = getIntent().getStringExtra("allergies");
+
+        user1 = new User();
+        user1.setEmail(email);
+
+        for (String s : diet.split(",")){
+            user1.addDiet(s);
+        }
+        for (String s : allergies.split(",")){
+            user1.addAllergy(s);
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -131,35 +149,39 @@ public class NavBaseActivity extends AppCompatActivity
         return true;
     }
 
-
-    public void searchGetRequest(String jsonString){
-        // setting up okhttp
-        OkHttpClient client = new OkHttpClient();
-
-        Request request = new Request.Builder()
-                .url(url + jsonString)
-                .get()
-                .build();
-
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (!response.isSuccessful()){
-                    throw new IOException("Unexpected code " + response);
-                } else {
-                    response1 = response;
-                }
-
-            }
-        });
-
+    public User userDetails(){
+        return user1;
     }
+
+
+//    public void searchGetRequest(String jsonString){
+//        // setting up okhttp
+//        OkHttpClient client = new OkHttpClient();
+//
+//        Request request = new Request.Builder()
+//                .url(url + jsonString)
+//                .get()
+//                .build();
+//
+//
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                if (!response.isSuccessful()){
+//                    throw new IOException("Unexpected code " + response);
+//                } else {
+//                    response1 = response;
+//                }
+//
+//            }
+//        });
+//
+//    }
 
 
 
@@ -187,6 +209,9 @@ public class NavBaseActivity extends AppCompatActivity
             case "ingr":
                 fragment = new IngrSearchFragment();
                 break;
+            case "ingrReturn":
+                fragment = new IngrSearchFragment();
+                break;
         }
         runReplaceTransaction(fragment);
     }
@@ -211,9 +236,9 @@ public class NavBaseActivity extends AppCompatActivity
         searchTerms.addKeywords(nameParam);
         // Need to get and add diet and allergies to searchTerms as well
 
-        searchGetRequest("search.php?terms="+searchTerms.toString());
 
-        return response1;
+
+        return null;
     }
 
     @Override

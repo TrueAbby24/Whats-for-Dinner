@@ -54,6 +54,8 @@ public class IngrSearchResultsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ingr_search_results, container, false);
 
+
+
         mContext = getContext();
         mConstraintLayout = (ConstraintLayout) view.findViewById(R.id.layout);
         returnToIngr = (Button)view.findViewById(R.id.ingrReturn);
@@ -66,12 +68,23 @@ public class IngrSearchResultsFragment extends Fragment {
         mAdapter = new IngrResultAdapter(mContext, recipeList);
         mRecyclerView.setAdapter(mAdapter);
 
+        createListener(returnToIngr, "ingrReturn");
+
         //not sure if more is needed to populate the list
         //need to get list to fill recipeList on creation
         //return to ingrSelect when button is pressed
 
 
         return view;
+    }
+
+    public void createListener(Button btn, final String id){
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                mListener.changeFragment(id);
+            }
+        });
     }
 
 }
