@@ -53,11 +53,4 @@ foreach($af_arr as $af_value){
 
 $response["success"]=true;
 echo json_encode($response);
- 
-
-
-
-
-
-
 ?>
