@@ -53,14 +53,21 @@ public class NavBaseActivity extends AppCompatActivity
         allergies = getIntent().getStringExtra("allergies");
 
         user1 = new User();
-        user1.setEmail(email);
-        user1.setPassword(getIntent().getStringExtra("password"));
+        try {
+            user1.setEmail(email);
+            user1.setPassword(getIntent().getStringExtra("password"));
 
-        for (String s : diet.split(",")){
-            user1.addDiet(s);
-        }
-        for (String s : allergies.split(",")){
-            user1.addAllergy(s);
+            for (String s : diet.split(",")) {
+                user1.addDiet(s);
+            }
+            for (String s : allergies.split(",")) {
+                user1.addAllergy(s);
+            }
+        } catch (NullPointerException e) {
+
+            user1.setEmail("bloubulle@pretoria.co.za");
+            user1.setPassword("Vic");
+            user1.addAllergy("dairy");
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

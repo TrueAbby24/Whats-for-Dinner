@@ -25,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String email = registerEmail.getText().toString();
                 final String password = registerPassword.getText().toString();
 
-                Intent intent = new Intent(getBaseContext(), DietActivity.class);
+                Intent intent = new Intent(getBaseContext(), NavBaseActivity.class);
                 intent.putExtra("email", email);
                 intent.putExtra("password", password);
                 startActivity(intent);

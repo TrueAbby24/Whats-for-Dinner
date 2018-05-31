@@ -1,0 +1,21 @@
+References:
+
+User authentication:
+https://github.com/tonikami/NEWLoginRegister
+
+Re: password encryption:
+https://www.lynda.com/PHP-tutorials/Password-encryption/133321/180320-4.html
+https://en.wikipedia.org/wiki/Bcrypt
+
+Libraries:
+Volley: https://github.com/google/volley
+json-simple: https://github.com/fangyidong/json-simple
+jsoup: https://jsoup.org/
+unirest-java: http://unirest.io/java.html
+
+Credit to
+http://allrecipes.com.au/?rum=us for their information and content
+
+SSH: infs3202-5eab4a09.zones.eait.uq.edu.au
+
+URL: https://infs3202-5eab4a09.uqcloud.net/

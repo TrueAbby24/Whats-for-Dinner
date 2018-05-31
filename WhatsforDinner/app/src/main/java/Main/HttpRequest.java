@@ -116,6 +116,7 @@ public class HttpRequest {
 		return getSuccess(sendPost(BASE_URL + "login.php", params));
 	}
 	
+
 	public static String getAllergies(String email) {
 		return sendGet(BASE_URL+"get_aller_fav.php?email="+email+"&type=allergies", "[]");
 	}
@@ -145,8 +146,13 @@ public class HttpRequest {
 	
 	public static boolean deleteFavRecipe(String email, String recipes) {
 		recipes = recipes.replace(" ", "%20");
-		String params = "email="+email+"&af_str="+recipes+"&type=fav_recipes";
-		return getSuccess(sendPost(BASE_URL+"afremove.php", params));
+		String params = "email=" + email + "&af_str=" + recipes + "&type=fav_recipes";
+		return getSuccess(sendPost(BASE_URL + "afremove.php", params));
+	}
+	public static boolean updateDiet(String email, String diet) {
+		String params = "email="+email+"&diet="+diet; 
+		return getSuccess(sendPost(BASE_URL + "updatediet.php", params));
+
 	}
 	
 }
