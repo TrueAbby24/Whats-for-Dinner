@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import Main.HttpRequest;
@@ -37,6 +38,7 @@ public class DietActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diet);
+        checked = Collections.<String>emptyList();
 
         vegCheck = (CheckBox) findViewById(R.id.checkBoxVege);
         pesceCheck = (CheckBox) findViewById(R.id.checkBoxPesce);
@@ -45,7 +47,7 @@ public class DietActivity extends AppCompatActivity {
         lactoseCheck = (CheckBox) findViewById(R.id.checkBoxLactose);
 
         other = (TextInputEditText) findViewById(R.id.dietOther);
-        nextBtn = (Button) findViewById(R.id.dietSaveBtn);
+        nextBtn = (Button) findViewById(R.id.dietNextBtn);
 
         final List<CheckBox> checkBoxList = new ArrayList(Arrays.asList(checkBoxArray));
         checkBoxList.add(vegCheck);
@@ -58,7 +60,10 @@ public class DietActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checked.clear();
+                if (checked != null){
+                    checked.clear();
+                }
+
                 checkBoxChecked(checkBoxList);
                 String diet = null;
                 for (String s : checked) {

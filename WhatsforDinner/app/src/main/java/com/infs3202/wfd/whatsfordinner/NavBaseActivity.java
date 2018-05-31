@@ -36,7 +36,7 @@ import okhttp3.Response;
 public class NavBaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnFragmentInteractionListener {
     private final String url = "https://infs32025eab4a09.uqcloud.net/"; // the base url for search
-    public User user1;
+    public User user1 = null;
     private String email;
     private String diet;
     private String allergies;
